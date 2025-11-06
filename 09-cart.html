@@ -14,7 +14,7 @@
 <div class="card">
     <p class="h6 font-weight-bold text-center">#09 - Panier</p>
     <div class="instructions">
-        <p class="text-secondary">Votre mission si toutefois vous l'acceptez, est de vérifier la concordance des mots de passes :</p>
+        <p class="text-secondary">Votre mission si toutefois vous l'acceptez, est de vérifier l'exactitude du bon de promotion</p>
         <br />
         <p class="text-secondary">Vous devez retourner la valeur de votre panier</p>
         <p class="text-secondary">Si je sélectionne <i class="text-dark">Une formation sur javascript (30€)</i> avec le bon code de promotion, j'obtiendrai :</p>
@@ -43,6 +43,28 @@
         let articles = document.getElementById("articles");
         let selectedArticle = articles.options[articles.selectedIndex].value;
 
+        //On pré-construit le message
+        let message = "La valeur de votre panier est de "
+
+        //On vérifie l'article sélectionné
+        if(selectedArticle === "one"){
+            let bonPromo = document.getElementById("promotion").value
+
+            //On vérifie si le bon de promotion est exact
+            if(bonPromo === VALID_PROMOTION_CODE){
+                message += "27€"
+            }
+
+            else{
+                message += "30€"
+            }
+
+        }
+        else{
+            message += "50€"
+        }
+        
+        alert(message)
         // CODE HERE !
     }
 </script>
