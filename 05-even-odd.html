@@ -37,7 +37,21 @@
     function evenOrOdd() {
         // AIDE : regarder du côté des modulos en javascript
 
-        let number = document.getElementById("number").value;
+        let number = parseInt(document.getElementById("number").value);
+
+        //On préconstruit le message à afficher
+        let message = number + " est "
+
+        //On utilise le modulo pour savoir si le nombre est pair et on complète le message suivant le résultat
+        if(number%2 === 0){
+            message+="pair"
+        }
+
+        else{
+            message+="impair"
+        }
+
+        alert(message)
 
         // CODE HERE !
     }
