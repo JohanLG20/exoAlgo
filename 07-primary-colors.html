@@ -25,8 +25,8 @@
     <!--Formulaire-->
     <select name="color" id="colors">
         <option value="">--Choisissez une couleur--</option>
-        <option value="green">Vert</option>
-        <option value="purple">Violet</option>
+        <option value="vert">Vert</option>
+        <option value="violet">Violet</option>
         <option value="orange">Orange</option>
     </select>
     <button type="button" class="btn btn-primary" onclick="primaryColors()">
@@ -37,9 +37,24 @@
 <script type="text/javascript">
     function primaryColors() {
         let colors = document.getElementById("colors");
+        //On récupère ici la couleur choisie par l'utilisateur sous forme textuelle
         let secondaryColor = colors.options[colors.selectedIndex].value;
+        //On préconstruit le message
+        let message = "Le "+secondaryColor+" est composé de "
 
-        // CODE HERE !
+        //On créer la logique pour afficher les couleurs primaires nécessaires pour créer la couleur secondaire
+        if(secondaryColor === "Violet"){
+            message += "bleu et de rouge"
+        }
+        else if(secondaryColor === "Vert"){
+            message += "jaune et de bleu"
+        }
+        else{
+            message += "bleu et de jaune"
+        }
+
+        alert(message)
+
     }
 </script>
 </body>
