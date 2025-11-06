@@ -28,11 +28,16 @@
 
 <script type="text/javascript">
     function displayMessage() {
+        //On récupère le prénom que la personne a entrer dans la case prénom grâce à l'id "firstname"
         let firstname = document.getElementById("firstname").value;
+        //On récupère le nom de famille que la personne a entrer dans la case prénom grâce à l'id "last"
         let lastname = document.getElementById("lastname").value;
+        //On créer le nom complet de la personne en concaténant le prénom et le nom de famille (que l'on a mis en majuscule), séparé d'un espace
         let fullname = firstname + " " + lastname.toUpperCase();
+        //On stock le message que l'on souhaite afficher
         let message = "Bonjour " + fullname;
-
+        
+        //On affiche le message à l'écran dans un écran alerte
         alert(message)
     }
 </script>
