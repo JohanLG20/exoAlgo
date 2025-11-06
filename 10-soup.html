@@ -62,20 +62,62 @@
 
 <script type="text/javascript">
     function doYouLikeIt() {
-        // CODE HERE !
+
+        let message = ""
+
+        if(isPoisoned()){
+            message += "Game over..."
+        }
+
+        else{
+            //Arrivé ici, le soupe ne peut plus être empoisonnée
+            if(isSalty()){
+                if(!isSweet()){
+                    message += "Hum la bonne sou-soupe salée !"
+                }
+                else{
+                    message += "Beurk... c'est pas bon !"
+                }
+            }
+            //Arrivé ici, la soupe ne peut plus être ni salée, ni empoisonnée
+            else{
+                if(isSweet()){
+                    message += "Hum la bonne sou-soupe sucrée !"
+                }
+
+                else{
+                    message += "Qu'est-ce qu'une soupe sans ingrédients ? :("
+                }
+            }
+        }
+
+        alert(message)
     }
 
+    //Retourne vrai si au moins un des éléments salée est coché
     function isSalty() {
         let carrots = document.getElementById("carrots").checked;
-        // CODE HERE !
+        let tomatoes = document.getElementById("tomatoes").checked;
+        let potatoes = document.getElementById("potatoes").checked;
+
+        return carrots || tomatoes || potatoes
     }
 
+    //Retourne vrai si au moins un des éléments sucré est coché
     function isSweet() {
-        // CODE HERE !
+        let blackChocolate = document.getElementById("black-chocolate").checked; 
+        let whiteChocolate = document.getElementById("white-chocolate").checked;
+
+        return blackChocolate || whiteChocolate
+
     }
 
+    //Retourne vrai si au moins un poison est coché
     function isPoisoned() {
-        // CODE HERE !
+        let cyanure = document.getElementById("cyanide").checked;
+        let vitriol = document.getElementById("vitriol").checked;
+
+        return cyanure || vitriol
     }
 </script>
 </body>
