@@ -16,7 +16,7 @@
     <div class="instructions">
         <p class="text-secondary">Votre mission si toutefois vous l'acceptez, est de faire un convertisseur EUR/USD en partant de presque rien !</p>
         <br />
-        <p class="text-secondary">Si je rentre <i class="text-dark">10 Euros</i> mon programme retourne <i class="text-dark">10 Euros -> 10.79 Dollars</i></p>
+        <p class="text-secondary">Si je rentre <i class="text-dark">10 Euros</i> mon programme retourne <i class="text-dark">10 Euros -> 10.73 Dollars</i></p>
         <p class="text-secondary">Si je rentre <i class="text-dark">10 Dollars</i> mon programme retourne <i class="text-dark">10 Dollars -> 9.32 Euros</i></p>
         <p class="text-secondary">La valeur doit-être arrondi à deux chiffres après la virgule</p>
     </div>
@@ -31,14 +31,40 @@
     </select>
 
     <br/>
-    <button type="button" class="btn btn-primary">
+    <button type="button" class="btn btn-primary" onClick="convertCurrency()">
         Connaître la valeur en USD->EUR ou EUR->USD
     </button>
 </div>
 
 <script type="text/javascript">
-    // 1 EUR = 1.0729 USD
-    // CODE HERE !
+    
+    // Retourne la valeur dans la zone de texte convertie à un taux 1 EUR = 1.0729 USD   
+    function convertCurrency(){
+        //On récupère la monnaie sélectionnée
+        let currencies = document.getElementById("currencies")  
+        let currencyChoice = currencies.options[currencies.selectedIndex].value
+
+        //On récupère la valeur à convertir
+        let numberToConvert = parseInt(document.getElementById("value").value)
+
+        let message = numberToConvert.toString()
+
+        if(currencyChoice === "eur"){
+            //On converti le chiffre en laissant 2 chiffres après la virgule
+            let convertedNumber = Number.parseFloat(numberToConvert * 1.0729).toFixed(2)
+            message += "€ correspond à "+convertedNumber+"$"
+        }
+        else{
+            //On converti le chiffre en laissant 2 chiffres après la virgule
+            let convertedNumber = Number.parseFloat(numberToConvert / 1.0729).toFixed(2)
+            message += "$ correspond à "+convertedNumber+"€"
+        }
+
+        alert(message)
+
+    }
+
+    
 </script>
 </body>
 </html>
