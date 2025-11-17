@@ -64,31 +64,17 @@
     function doYouLikeIt() {
 
         let message = ""
-
+        
         if(isPoisoned()){
             message += "Game over..."
         }
 
         else{
-            //Arrivé ici, le soupe ne peut plus être empoisonnée
-            if(isSalty()){
-                if(!isSweet()){
-                    message += "Hum la bonne sou-soupe salée !"
-                }
-                else{
-                    message += "Beurk... c'est pas bon !"
-                }
-            }
-            //Arrivé ici, la soupe ne peut plus être ni salée, ni empoisonnée
-            else{
-                if(isSweet()){
-                    message += "Hum la bonne sou-soupe sucrée !"
-                }
+           if(isSalty() && !isSweet()){message += "Hum la bonne sou-soupe salée !"}
+           else if(isSweet() && !isSalty()){message += "Hum la bonne sou-soupe sucrée !"}
+           else if(isSalty() && isSweet()){message += "Beurk... c'est pas bon !"}
+           else{message += "Qu'est-ce qu'une soupe sans ingrédients ? :("}
 
-                else{
-                    message += "Qu'est-ce qu'une soupe sans ingrédients ? :("
-                }
-            }
         }
 
         alert(message)
